@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>    
+<body onkeypress="keypress()">
+    <h1>키보드 입력 예제</h1>
+
+    아무키나 누르세요 <br />
+    char <input type="text" id="keychar"><br />
+    keycode <input type="text" id="keycode"><br />
+    shift키 <input type="checkbox" id="shiftkey"><br />
+
+    <script>
+        function keypress(){
+            //원래 존재하는 내장 객체
+            let keycode = event.keyCode;
+
+            document.getElementById('keychar').value = String.fromCharCode(keycode);
+            document.getElementById('keycode').value = keycode;
+            document.getElementById('shiftkey').checked = event.shiftKey;
+        }
+    </script>
+
+    <hr />
+    <input type="text" onkeyup="aaa()">
+    <script>
+        var aaa= function(){//키보드를 눌렀다가 뛸때 발동함 
+            alert(this); //this는 이벤트 발생 요소가 아니라 window내장객체임!!
+        }
+    </script>
+ 
+    <hr />
+    <input type="text" id="in1">
+    <script>
+        var kkk= function(){
+            //alert(this); //this는 이벤트 발생 요소를 지칭함!!
+            this.value= this.value.toUpperCase();
+        }
+        document.getElementById('in1').addEventListener('keyup',kkk);
+    </script>
+    
+</body>
+</body>
+</html>
